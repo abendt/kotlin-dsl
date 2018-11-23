@@ -1,0 +1,33 @@
+@startuml
+!include lib/C4_Context.puml
+
+LAYOUT_TOP_DOWN
+LAYOUT_WITH_LEGEND
+LAYOUT_AS_SKETCH
+
+title Context diagram for the Gradle Kotlin DSL
+
+Person(dev, "Developer", "Developer using a Kotlin DSL based Gradle build")
+
+System_Boundary(gradleBuildTool, "Gradle") {
+
+    System_Ext(gradle, "Gradle Build Tool")
+
+    System(gradleKotlinDsl, "Gradle Kotlin DSL")
+
+    Rel_Neighbor(gradle, gradleKotlinDsl, "Uses")
+}
+
+
+System_Ext(ide, "IDE", "IntelliJ IDEA or Android Studio")
+
+System_Ext(kotlinTools, "Kotlin Toolchain", "kotlinc, Gradle plugin etc...")
+
+Rel(dev, gradle, "Uses", "Command Line")
+Rel(dev, ide, "Uses", "GUI")
+
+Rel(gradleKotlinDsl, kotlinTools, "Uses")
+Rel_Neighbor(ide, gradleKotlinDsl, "Uses")
+Rel(ide, kotlinTools, "Uses")
+
+@enduml

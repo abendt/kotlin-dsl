@@ -1,0 +1,12 @@
+@startuml
+!include lib/C4_Component.puml
+
+LAYOUT_TOP_DOWN
+LAYOUT_WITH_LEGEND
+LAYOUT_AS_SKETCH
+
+title Component diagram for the Gradle Kotlin DSL
+
+Person(todo, "TODO")
+
+@enduml
